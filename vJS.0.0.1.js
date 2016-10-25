@@ -10,7 +10,7 @@ function l(){
       alert("compile");
     break;
     case "3":
-      alert("options");
+      window.close();
     break;
   }
   document.getElementById("fileTab").value = "0";
