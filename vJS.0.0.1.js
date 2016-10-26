@@ -44,9 +44,11 @@ function proccessJS(js){
     var objData = functions[i].split("this");
     if(objData.length>1){
       output[i].isObject = true;
-      for(var j= 0;j<){
-        
+      var _temp = [];
+      for(var j= 0;j<objData.length;j++){
+        _temp.push(objData[j].split(" ")[0]);
       }
+      output[i].variables = _temp;
     }
   }
   console.log(output);
