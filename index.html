@@ -23,15 +23,23 @@
         height: 34px;
         -webkit-appearance: none;
       }
+      canvas{
+        border:1px solid red;
+      }
       .fb{
         width:100%;
         height:5px;
         background-color:rgb(50,50,50);
       }
+      .screen{
+        width:100%;
+        height:100%;
+        background-color:rgb(50,50,50)
+;      }
     </style>
     <script src="vJS.0.0.1.js"></script>
   </head>
-  <body>
+  <body class="screen">
     <span class="dropdowns">
       <select id=fileTab value="0">
         <option value="0">file</option>
@@ -41,5 +49,11 @@
       </select>
     </span>
     <div class="fb"></div>
+    <div id=importFile class="screen" hidden>
+      <textarea id=jsimport placeholder="paste javascript here" class="screen"></textarea>
+    </div>
+    <div id=renderJS class="screen">
+      <canvas id=renderJScan></canvas>
+    </div>
   </body>
 </html>
