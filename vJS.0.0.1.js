@@ -1,21 +1,54 @@
-var src="https://www.google.com/search?num=100&site=&source=hp&q=test&oq=test&gs_l=hp.3..0l2j0i131k1l3j0l5.8516.8804.0.8962.5.5.0.0.0.0.162.645.1j4.5.0....0...1c.1.64.hp..0.4.578.0..0i131i155k1.wsl5nPs6jnw"
-var tabs = ["visual","raw","updates"];
-var tcont = ["t1","t2","t3"];
-var frame = document.getElementById("loader");
+var mode = "render";
+var canvas = document.getElementById("renderJScan");
+canvas.width = document.getElementById("renderJS").offsetWidth-10;
+canvas.height = window.innerHeight-70;
 function l(){
+  try{
   window.requestAnimationFrame(l);
   switch(document.getElementById("fileTab").value.toString()){
     case "1":
-      alert("open");
+      mode = "loadJS";
+      document.getElementById("jsimport").value="";
+      document.getElementById("renderJS").hidden = true;
+      document.getElementById("importFile").hidden = false;
     break;
     case "2":
-      var lookup = document.getElementById("topic").value;
-      loader.src=src.replace(/test/gm,lookup);
+      
     break;
     case "3":
-      window.close();
+      
     break;
   }
   document.getElementById("fileTab").value = "0";
+  if(mode === "loadJS"){
+    if(document.getElementById("jsimport").value !== ""){
+      mode = "render";
+      proccessJS(document.getElementById("jsimport").value);
+      document.getElementById("importFile").hidden = true;
+      document.getElementById("renderJS").hidden = false;
+    }
+  }
+  }catch(e){
+    console.log(e);
+  }
 }
 l();
+function proccessJS(js){
+  var output = [];
+  var functions = js.split("function");
+  for(var i = 0;i<functions.length;i++){
+    output.push({});
+    output[i].isObject = false;
+    output[i].variables = [];
+    output[i].function = "funciton "+functions[i];
+    var objData = functions[i].split("this");
+    if(objData.length>1){
+      output[i].isObject = true;
+      for(var j= 0;j<){
+        
+      }
+    }
+  }
+  console.log(output);
+  return output;
+}
